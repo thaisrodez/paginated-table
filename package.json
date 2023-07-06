@@ -1,6 +1,6 @@
 {
   "name": "paginated-table-pkg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "scripts": {
     "rollup-build-lib": "rollup -c",
@@ -19,8 +19,6 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.44.0",
     "postcss": "^8.4.24",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rollup": "^3.26.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-postcss": "^4.0.2",
@@ -39,6 +37,7 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@heroicons/react": "^2.0.18"
+    "@heroicons/react": "^2.0.18",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
