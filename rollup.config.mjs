@@ -26,6 +26,9 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      postcss({
+        plugins: [],
+      }),
     ],
   },
   {
@@ -33,5 +36,6 @@ export default [
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
+    external: [/\.(css|less|scss)$/],
   },
 ];
