@@ -24,7 +24,9 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
+      resolve({
+        dedupe: ["react", "react-dom"],
+      }),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
