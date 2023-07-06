@@ -1,13 +1,12 @@
 import React from 'react';
-
-interface Item {
+export interface Item {
     [key: string]: any;
 }
-interface TableHeader {
+export interface TableHeader {
     key: string;
     title: string;
 }
-interface FullTableProps {
+export interface FullTableProps {
     data: Item[];
     tableHeaders: TableHeader[];
 }
@@ -21,6 +20,4 @@ interface FullTableProps {
  * <FullTable data={data} tableHeaders={tableHeaders} />
  * )
  */
-declare function FullTable({ data, tableHeaders }: FullTableProps): React.JSX.Element;
-
-export { FullTable as Table };
+export default function FullTable({ data, tableHeaders }: FullTableProps): React.JSX.Element;

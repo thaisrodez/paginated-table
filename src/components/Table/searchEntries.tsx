@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react'
+import React from 'react'
 
 export interface SearchEntriesProps {
   searchInput: string

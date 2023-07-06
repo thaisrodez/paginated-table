@@ -1,4 +1,4 @@
-import React, { useState, type ReactElement, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { RowsPerPage } from './displayEntries'
 import { SearchEntries } from './searchEntries'
 import { Table } from './table'

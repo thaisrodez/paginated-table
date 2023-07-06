@@ -2801,8 +2801,406 @@ if (process.env.NODE_ENV === 'production') {
 var reactExports = react.exports;
 var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
-const Button = ({ label }) => {
-    return React.createElement("button", null, label);
+/**
+ * React component indicating the extend of data displayed
+ * @component
+ * @example
+ * const indexes = {firstIndex: 0, lastIndex: 9}
+ * const totalOfRows = 34
+ * return (
+ * <DisplayedRows indexes={indexes} totalOfRows={totalOfRows} />
+ * )
+ */
+function DisplayedRows({ indexes, totalOfRows }) {
+    return (React.createElement("div", null,
+        React.createElement("p", null, `Showing ${indexes.firstIndex + 1} to ${indexes.lastIndex < totalOfRows ? indexes.lastIndex : totalOfRows} of ${totalOfRows} entries`)));
+}
+
+const NUMBER_OF_ENTRIES = [10, 25, 50, 100];
+/**
+ * React component indicating the extend of data displayed
+ * @component
+ * @example
+ * const setRowsPerPage = useState(10)[1]
+ * return (
+ * <RowsPerPage setRowsPerPage={setRowsPerPage} />
+ * )
+ */
+function RowsPerPage({ setRowsPerPage }) {
+    /**
+     * Set the number of rows per page
+     * @param {React.ChangeEvent<HTMLSelectElement>} e
+     */
+    const onChange = (e) => {
+        setRowsPerPage(parseInt(e.target.value));
+    };
+    return (React.createElement("div", { className: 'flex space-x-2 items-center w-1/6' },
+        React.createElement("p", null, "Show"),
+        React.createElement("select", { name: 'entries', id: 'entries', className: 'input', onChange: onChange }, NUMBER_OF_ENTRIES.map((number) => (React.createElement("option", { key: number, value: number }, number)))),
+        React.createElement("p", null, "entries")));
+}
+
+function ChevronDownIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/reactExports.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/reactExports.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/reactExports.createElement("path", {
+    fillRule: "evenodd",
+    d: "M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z",
+    clipRule: "evenodd"
+  }));
+}
+const ForwardRef$4 = reactExports.forwardRef(ChevronDownIcon);
+var ChevronDownIcon$1 = ForwardRef$4;
+
+function ChevronLeftIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/reactExports.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/reactExports.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/reactExports.createElement("path", {
+    fillRule: "evenodd",
+    d: "M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z",
+    clipRule: "evenodd"
+  }));
+}
+const ForwardRef$3 = reactExports.forwardRef(ChevronLeftIcon);
+var ChevronLeftIcon$1 = ForwardRef$3;
+
+function ChevronRightIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/reactExports.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/reactExports.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/reactExports.createElement("path", {
+    fillRule: "evenodd",
+    d: "M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z",
+    clipRule: "evenodd"
+  }));
+}
+const ForwardRef$2 = reactExports.forwardRef(ChevronRightIcon);
+var ChevronRightIcon$1 = ForwardRef$2;
+
+function ChevronUpDownIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/reactExports.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/reactExports.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/reactExports.createElement("path", {
+    fillRule: "evenodd",
+    d: "M11.47 4.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 01-1.06 1.06L12 6.31 8.78 9.53a.75.75 0 01-1.06-1.06l3.75-3.75zm-3.75 9.75a.75.75 0 011.06 0L12 17.69l3.22-3.22a.75.75 0 111.06 1.06l-3.75 3.75a.75.75 0 01-1.06 0l-3.75-3.75a.75.75 0 010-1.06z",
+    clipRule: "evenodd"
+  }));
+}
+const ForwardRef$1 = reactExports.forwardRef(ChevronUpDownIcon);
+var ChevronUpDownIcon$1 = ForwardRef$1;
+
+function ChevronUpIcon({
+  title,
+  titleId,
+  ...props
+}, svgRef) {
+  return /*#__PURE__*/reactExports.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/reactExports.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/reactExports.createElement("path", {
+    fillRule: "evenodd",
+    d: "M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z",
+    clipRule: "evenodd"
+  }));
+}
+const ForwardRef = reactExports.forwardRef(ChevronUpIcon);
+var ChevronUpIcon$1 = ForwardRef;
+
+/**
+ * React component for pagination
+ * @component
+ * @example
+ * const pageRange = [1, 2, 3]
+ * const numberOfPages = 3
+ * const currentPage = 2
+ * const setCurrentPage = useState(2)[1]
+ * return (
+ * <Pagination pageRange={pageRange} numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+ * )
+ */
+function Pagination({ pageRange, numberOfPages, currentPage, setCurrentPage }) {
+    const handlePreviousPage = () => {
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+    const handleNextPage = () => {
+        if (currentPage !== numberOfPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+    return (React.createElement("nav", { className: 'flex justify-center' },
+        React.createElement("ul", { className: 'flex space-x-4 items-center' },
+            React.createElement("li", null,
+                React.createElement("button", { onClick: handlePreviousPage, className: 'border border-gray-400 rounded-lg p-2' },
+                    React.createElement(ChevronLeftIcon$1, { className: 'w-5 h-5' }))),
+            pageRange.map((n, index) => (React.createElement("li", { key: index, className: `${currentPage === n ? 'text-blue-500' : ''} text-xl` },
+                React.createElement("button", { onClick: () => { setCurrentPage(n); } }, n)))),
+            React.createElement("li", null,
+                React.createElement("button", { onClick: handleNextPage, className: 'border border-gray-400 rounded-lg p-2' },
+                    React.createElement(ChevronRightIcon$1, { className: 'w-5 h-5' }))))));
+}
+
+/**
+ * Search Input component
+ * @component
+ * @example
+ * const searchInput = 'hello'
+ * const setSearchInput = useState('')[1]
+ * return (
+ * <SearchEntries searchInput={searchInput} setSearchInput={setSearchInput} />
+ * )
+ */
+function SearchEntries({ searchInput, setSearchInput }) {
+    const handleChange = (e) => {
+        setSearchInput(e.target.value);
+    };
+    return (React.createElement("div", { className: 'flex space-x-2 items-center' },
+        React.createElement("label", { htmlFor: 'searchTable', className: 'label' }, "Search"),
+        React.createElement("input", { type: "text", className: "input", id: "searchTable", name: "searchTable", value: searchInput, onChange: handleChange })));
+}
+
+/**
+ * Table
+ * @component
+ * @example
+ * const data = [{name: 'Bob'}, {name: 'Sam'}]
+ * const tableHeaders = [{key: 'name', title:'Name'}]
+ * const sorting = 'asc'
+ * const setSorting = useState('none')[1]
+ * const handleAscSorting = () => {}
+ * const handleDescSorting = () => {}
+ * return (
+ * <Table data={data} tableHeaders={tableHeaders} sorting={sorting} setSorting={setSorting} handleAscSorting={handleAscSorting} handleDescSorting={handleDescSorting}/>
+ * )
+ */
+function Table({ data, tableHeaders, sorting, setSorting, handleAscSorting, handleDescSorting }) {
+    return (React.createElement("table", { className: "w-full border-y-2" },
+        React.createElement("thead", null,
+            React.createElement("tr", null, tableHeaders.map((header) => (React.createElement("th", { key: header.key, className: 'py-4 ' },
+                React.createElement("div", { className: 'flex items-center' },
+                    sorting === 'none' && React.createElement("button", { onClick: () => {
+                            setSorting('desc');
+                        } },
+                        React.createElement(ChevronUpDownIcon$1, { className: 'w-6 h-6' })),
+                    React.createElement("div", { className: 'flex flex-col items-center' },
+                        sorting === 'asc' && React.createElement("button", { onClick: () => { handleAscSorting(header.key); } },
+                            React.createElement(ChevronUpIcon$1, { className: 'w-3 h-3' })),
+                        sorting === 'desc' &&
+                            React.createElement("button", { onClick: () => { handleDescSorting(header.key); } },
+                                React.createElement(ChevronDownIcon$1, { className: 'w-3 h-3' }))),
+                    header.title)))))),
+        React.createElement("tbody", { className: 'border-y-2' }, data.map((item, index) => (React.createElement("tr", { key: item.id, className: `${index % 2 === 0 ? 'bg-slate-100' : ''} border-y` },
+            React.createElement("td", { className: 'p-2' }, item.firstname),
+            React.createElement("td", { className: 'p-2' }, item.lastname),
+            React.createElement("td", { className: 'p-2' }, item.startDate.toString()),
+            React.createElement("td", { className: 'p-2' }, item.department),
+            React.createElement("td", { className: 'p-2' }, item.dateOfBirth.toString()),
+            React.createElement("td", { className: 'p-2' }, item.street),
+            React.createElement("td", { className: 'p-2' }, item.city),
+            React.createElement("td", { className: 'p-2' }, item.state),
+            React.createElement("td", { className: 'p-2' }, item.zipCode)))))));
+}
+
+/**
+ * Get the list of page numbers
+ * @param {number} numberOfPages Number of page
+ * @returns {number[]} List of page numbers
+ */
+const getPageRange = (numberOfPages) => {
+    const range = [];
+    for (let i = 1; i <= numberOfPages; i++) {
+        range.push(i);
+    }
+    return range;
+};
+/**
+ * Get the first and last indexes of data displayed on a page
+ * @param page Current page
+ * @param rowsPerPage Number of rows per page
+ * @returns {{firstIndex: number; lastIndex: number;}} First and last index displayed on a page
+ */
+const getIndexes = (page, rowsPerPage) => {
+    const lastIndex = page * rowsPerPage;
+    const firstIndex = lastIndex - rowsPerPage;
+    return { firstIndex, lastIndex };
+};
+/**
+ * Get the data displayed in one page
+ * @param data Array of data displayed in Table
+ * @param page Current page
+ * @param rowsPerPage Number of rows displayed per page
+ * @returns {Object[]} Data displayed on one page
+ */
+const getSlicedData = (data, page, rowsPerPage) => {
+    const { firstIndex, lastIndex } = getIndexes(page, rowsPerPage);
+    return data.slice(firstIndex, lastIndex);
+};
+/**
+ * Result of a search in one item
+ * @param obj One data item
+ * @param searchInput
+ * @returns {boolean} Whether the search input can be found in the item
+ */
+const searchThroughObject = (obj, searchInput) => {
+    const result = [];
+    for (const [_, value] of Object.entries(obj)) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        result.push(value.toString().search(searchInput));
+    }
+    return result.some((n) => n !== -1);
+};
+/**
+ * Get total number of pages
+ * @param data Array of data displayed in Table
+ * @param rowsPerPage Number of rows displayed per page
+ * @returns {number} Number of pages for all data
+ */
+const getNumberOfPages = (data, rowsPerPage) => {
+    return Math.ceil(data.length / rowsPerPage);
 };
 
-exports.Button = Button;
+/**
+ * Custom hook to handle table actions
+ * @param data Data to displayed in the table
+ * @param page Current page displayed
+ * @param rowsPerPage Number of rows displayed per page
+ * @param searchInput Search input
+ * @param sorting Type of sorting
+ * @param sortingKey Key sorted on
+ * @returns
+ */
+const useTable = (data, page, rowsPerPage, searchInput, sorting, sortingKey) => {
+    const [pageRange, setPageRange] = reactExports.useState([]);
+    const [paginatedData, setPaginatedData] = reactExports.useState([]);
+    const [numberOfPages, setNumberOfPages] = reactExports.useState(getNumberOfPages(data, rowsPerPage));
+    const [indexes, setIndexes] = reactExports.useState(getIndexes(page, rowsPerPage));
+    const [totalOfRows, setTotalOfRows] = reactExports.useState(data.length);
+    reactExports.useEffect(() => {
+        const range = getPageRange(numberOfPages);
+        setPageRange([...range]);
+        const currentIndexes = getIndexes(page, rowsPerPage);
+        setIndexes(Object.assign({}, currentIndexes));
+        let result = getSlicedData(data, page, rowsPerPage);
+        let currentNumberOfPages = getNumberOfPages(data, rowsPerPage);
+        let currentTotalOfRows = data.length;
+        if (searchInput.length > 0) {
+            const searchResult = data.filter((obj) => searchThroughObject(obj, searchInput));
+            currentNumberOfPages = getNumberOfPages(searchResult, rowsPerPage);
+            currentTotalOfRows = searchResult.length;
+            result = getSlicedData(searchResult, page, rowsPerPage);
+        }
+        if (sortingKey.length > 0 && sorting === "asc") {
+            result = result.sort((a, b) => b[sortingKey]
+                .toString()
+                .localeCompare(a[sortingKey].toString()));
+        }
+        else if (sortingKey.length > 0 && sorting === "desc") {
+            result = result.sort((a, b) => a[sortingKey]
+                .toString()
+                .localeCompare(b[sortingKey].toString()));
+        }
+        setTotalOfRows(currentTotalOfRows);
+        setNumberOfPages(currentNumberOfPages);
+        setPaginatedData(result);
+    }, [
+        data,
+        rowsPerPage,
+        page,
+        numberOfPages,
+        searchInput,
+        sorting,
+        sortingKey,
+    ]);
+    return { paginatedData, pageRange, numberOfPages, indexes, totalOfRows };
+};
+
+/**
+ * Main table component displaying table and handling table functionalities
+ * @component
+ * @example
+ * const data = [{name: 'Bob'}, {name: 'Sam'}]
+ * const tableHeaders = [{key: 'name', title:'Name'}]
+ * return (
+ * <FullTable data={data} tableHeaders={tableHeaders} />
+ * )
+ */
+function FullTable({ data, tableHeaders }) {
+    const [currentPage, setCurrentPage] = reactExports.useState(1);
+    const [rowsPerPage, setRowsPerPage] = reactExports.useState(10);
+    const [searchInput, setSearchInput] = reactExports.useState('');
+    const [sorting, setSorting] = reactExports.useState('none');
+    const [sortingKey, setSortingKey] = reactExports.useState('');
+    const [filteredPaginatedData, setFilterPaginatedData] = reactExports.useState([]);
+    const { paginatedData, pageRange, numberOfPages, indexes, totalOfRows } = useTable(data, currentPage, rowsPerPage, searchInput, sorting, sortingKey);
+    reactExports.useEffect(() => {
+        setFilterPaginatedData(paginatedData);
+    }, [paginatedData]);
+    const handleDescSorting = (key) => {
+        setSortingKey(key);
+        setSorting('asc');
+    };
+    const handleAscSorting = (key) => {
+        setSortingKey(key);
+        setSorting('desc');
+    };
+    return (React.createElement("div", { className: 'space-y-8 px-12' },
+        React.createElement("div", { className: 'flex justify-between' },
+            React.createElement(RowsPerPage, { setRowsPerPage: setRowsPerPage }),
+            React.createElement(SearchEntries, { searchInput: searchInput, setSearchInput: setSearchInput })),
+        React.createElement(Table, { data: filteredPaginatedData, tableHeaders: tableHeaders, sorting: sorting, setSorting: setSorting, handleAscSorting: handleAscSorting, handleDescSorting: handleDescSorting }),
+        React.createElement("div", { className: 'flex items-center justify-between' },
+            React.createElement(DisplayedRows, { indexes: indexes, totalOfRows: totalOfRows }),
+            React.createElement(Pagination, { pageRange: pageRange, numberOfPages: numberOfPages, currentPage: currentPage, setCurrentPage: setCurrentPage }))));
+}
+
+exports.Table = FullTable;
