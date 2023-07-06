@@ -6,6 +6,7 @@ import {
   getSlicedData,
   searchThroughObject,
 } from "../utils/utils";
+import { Item } from "../components/Table/fullTable";
 
 /**
  * Custom hook to handle table actions
@@ -18,7 +19,7 @@ import {
  * @returns
  */
 export const useTable = (
-  data: Object[],
+  data: Item[],
   page: number,
   rowsPerPage: number,
   searchInput: string,
